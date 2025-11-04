@@ -1,0 +1,204 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: 'Courier New', monospace;
+  background: #000;
+}
+
+#game-canvas {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+
+.hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 100;
+  color: #00ff00;
+  font-family: 'Courier New', monospace;
+}
+
+.crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+}
+
+.crosshair::before,
+.crosshair::after {
+  content: '';
+  position: absolute;
+  background: rgba(0, 255, 0, 0.8);
+}
+
+.crosshair::before {
+  width: 2px;
+  height: 20px;
+  left: 9px;
+  top: 0;
+}
+
+.crosshair::after {
+  width: 20px;
+  height: 2px;
+  top: 9px;
+  left: 0;
+}
+
+.health-bar {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ammo-counter {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  font-size: 32px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.score-board {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  text-align: center;
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.menu h1 {
+  color: #00ff00;
+  font-size: 48px;
+  margin-bottom: 40px;
+  text-shadow: 0 0 20px #00ff00;
+}
+
+.menu button {
+  background: #00ff00;
+  color: #000;
+  border: none;
+  padding: 15px 40px;
+  font-size: 24px;
+  font-family: 'Courier New', monospace;
+  cursor: pointer;
+  margin: 10px;
+  transition: all 0.3s;
+  pointer-events: auto;
+}
+
+.menu button:hover {
+  background: #00dd00;
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ff00;
+}
+
+.game-over {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.95);
+  padding: 40px;
+  border: 3px solid #ff0000;
+  z-index: 1000;
+  pointer-events: auto;
+  text-align: center;
+}
+
+.game-over h2 {
+  color: #ff0000;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.game-over p {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.instructions {
+  color: #00ff00;
+  font-size: 16px;
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+.weapon-name {
+  position: absolute;
+  bottom: 70px;
+  right: 30px;
+  font-size: 18px;
+  color: #ffff00;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.hit-marker {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.hit-marker.show {
+  opacity: 1;
+}
+
+.hit-marker::before,
+.hit-marker::after {
+  content: '';
+  position: absolute;
+  background: #ff0000;
+  width: 20px;
+  height: 2px;
+}
+
+.hit-marker::before {
+  transform: rotate(45deg);
+  top: 19px;
+  left: 10px;
+}
+
+.hit-marker::after {
+  transform: rotate(-45deg);
+  top: 19px;
+  left: 10px;
+}
